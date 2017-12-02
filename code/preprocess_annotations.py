@@ -6,7 +6,7 @@ import os
 import h5py
 import numpy as np
 
-from iep.preprocess import build_vocab, tokenize, encode
+from preprocess import build_vocab, tokenize, encode
 import argparse
 
 parser = argparse.ArgumentParser()
