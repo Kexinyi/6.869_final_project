@@ -40,7 +40,6 @@ def build_model():
   for i in range(args.model_stage):
     name = 'layer%d' % (i + 1)
     layers.append(getattr(cnn, name))
-  layers.append(getattr(cnn, 'avgpool'))
   model = torch.nn.Sequential(*layers)
   model.cuda()
   model.eval()
