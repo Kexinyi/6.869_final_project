@@ -26,26 +26,8 @@ def load_cpu(path):
   """
   return torch.load(path, map_location=lambda storage, loc: storage)
 
-def load_program_generator(path):
-  checkpoint = load_cpu(path)
-  kwargs = checkpoint['program_generator_kwargs']
-  state = checkpoint['program_generator_state']
-  model = Seq2Seq(**kwargs)
-  model.load_state_dict(state)
-  return model, kwargs
 
-
-def load_execution_engine(path, verbose=True):
-  checkpoint = load_cpu(path)
-  kwargs = checkpoint['execution_engine_kwargs']
-  state = checkpoint['execution_engine_state']
-  kwargs['verbose'] = verbose
-  model = ModuleNet(**kwargs)
-  cur_state = model.state_dict()
-  model.load_state_dict(state)
-  return model, kwargs
-
-def load_baseline(path):
+def load_model(path):
   model_cls_dict = {
     'LSTM': LstmModel,
     'CNN+LSTM': CnnLstmModel,

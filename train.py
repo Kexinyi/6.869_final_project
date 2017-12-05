@@ -12,12 +12,12 @@ from data import ClevrDataLoader
 
 parser = argparse.ArgumentParser()
 # Input data
-parser.add_argument('--train_question_h5', default='data/preprocessed_h5/train_ann_captions.h5')
+parser.add_argument('--train_question_h5', default='data/preprocessed_h5/train_anns_1caps.h5')
 parser.add_argument('--train_features_h5', default='data/preprocessed_h5/train_features.h5')
-parser.add_argument('--val_question_h5', default='data/preprocessed_h5/val_ann_captions.h5')
+parser.add_argument('--val_question_h5', default='data/preprocessed_h5/val_anns_1caps.h5')
 parser.add_argument('--val_features_h5', default='data/preprocessed_h5/val_features.h5')
 parser.add_argument('--feature_dim', default='1024,14,14')
-parser.add_argument('--vocab_json', default='data/preprocessed_h5/vocab_captions.json')
+parser.add_argument('--vocab_json', default='data/preprocessed_h5/vocab_1caps.json')
 
 parser.add_argument('--loader_num_workers', type=int, default=1)
 
@@ -60,7 +60,7 @@ parser.add_argument('--classifier_dropout', default=0, type=float)
 
 # Optimization options
 parser.add_argument('--batch_size', default=64, type=int)
-parser.add_argument('--num_iterations', default=20000, type=int)
+parser.add_argument('--num_iterations', default=30000, type=int)
 parser.add_argument('--learning_rate', default=5e-4, type=float)
 
 # Output options
@@ -102,7 +102,7 @@ def main(args):
 
 def train_loop(args, train_loader, val_loader):
   vocab = utils.load_vocab(args.vocab_json)
-  baseline_best_state = None
+  best_baseline_state = None
 
   baseline_model, baseline_kwargs = get_baseline_model(args)
   params = baseline_model.parameters()
@@ -201,7 +201,7 @@ def get_state(m):
 def get_baseline_model(args):
   vocab = utils.load_vocab(args.vocab_json)
   if args.baseline_start_from is not None:
-    model, kwargs = utils.load_baseline(args.baseline_start_from)
+    model, kwargs = utils.load_model(args.baseline_start_from)
   elif args.model_type == 'LSTM':
     kwargs = {
       'vocab': vocab,

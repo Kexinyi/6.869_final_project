@@ -45,7 +45,7 @@ def main(args):
     for line in f:
       questions.append(line.strip())
 
-  # read in the asswers
+  # read in the answers
   print('loading answers')
   answers = []
   with open('{}/{}/answers.txt'.format(args.cocoqa_path, args.split)) as f:
