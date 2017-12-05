@@ -12,12 +12,12 @@ from data import ClevrDataLoader
 
 parser = argparse.ArgumentParser()
 # Input data
-parser.add_argument('--train_question_h5', default='data/preprocessed_h5/train_annotations.h5')
+parser.add_argument('--train_question_h5', default='data/preprocessed_h5/train_ann_captions.h5')
 parser.add_argument('--train_features_h5', default='data/preprocessed_h5/train_features.h5')
-parser.add_argument('--val_question_h5', default='data/preprocessed_h5/val_annotations.h5')
+parser.add_argument('--val_question_h5', default='data/preprocessed_h5/val_ann_captions.h5')
 parser.add_argument('--val_features_h5', default='data/preprocessed_h5/val_features.h5')
 parser.add_argument('--feature_dim', default='1024,14,14')
-parser.add_argument('--vocab_json', default='data/preprocessed_h5/vocab.json')
+parser.add_argument('--vocab_json', default='data/preprocessed_h5/vocab_captions.json')
 
 parser.add_argument('--loader_num_workers', type=int, default=1)
 
@@ -60,13 +60,13 @@ parser.add_argument('--classifier_dropout', default=0, type=float)
 
 # Optimization options
 parser.add_argument('--batch_size', default=64, type=int)
-parser.add_argument('--num_iterations', default=100000, type=int)
+parser.add_argument('--num_iterations', default=20000, type=int)
 parser.add_argument('--learning_rate', default=5e-4, type=float)
 
 # Output options
 parser.add_argument('--checkpoint_path', required=True)
 parser.add_argument('--record_loss_every', type=int, default=1)
-parser.add_argument('--checkpoint_every', default=10000, type=int)
+parser.add_argument('--checkpoint_every', default=1000, type=int)
 
 
 def main(args):
@@ -74,6 +74,7 @@ def main(args):
   if not os.path.isdir(args.checkpoint_path):
     os.mkdir(args.checkpoint_path)
   args.checkpoint_path += '/checkpoint.pt'
+
 
   vocab = utils.load_vocab(args.vocab_json)
   train_loader_kwargs = {
