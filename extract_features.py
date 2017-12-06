@@ -20,6 +20,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--split', required=True)
 parser.add_argument('--max_images', default=None, type=int)
 parser.add_argument('--output_h5_file', required=True)
+parser.add_argument('--coco_path', default='data/coco')
 
 parser.add_argument('--image_height', default=224, type=int)
 parser.add_argument('--image_width', default=224, type=int)
@@ -61,13 +62,13 @@ def run_batch(cur_batch, model):
 
 
 def main(args):
-  img_path = '/data/vision/billf/object-properties/dataset/torralba-3/COCO'
-  coco_path = 'data/coco'
+  # img_path = '/data/vision/billf/object-properties/dataset/torralba-3/COCO'
+  img_path = args.coco_path
   data_type = args.split + '2014'
   if args.split != 'test':
-    ins_file = '{}/annotations/instances_{}.json'.format(coco_path,data_type)
+    ins_file = '{}/annotations/instances_{}.json'.format(args.coco_path,data_type)
   else:
-    ins_file = '%s/annotations/image_info_test2014.json' % coco_path
+    ins_file = '%s/annotations/image_info_test2014.json' % args.coco_path
   coco = COCO(ins_file)
 
   model = build_model()
