@@ -2,6 +2,17 @@
 
 This is the github repo for 6.869 final project (Fall 2017) by Kexin Yi and Aditya Thomas.
 
+### Overview
+Visual and contextual question answering as separate task
+<div align="center">
+  <img src="https://github.com/Kexinyi/6.869_final_project/blob/master/img/Slide1.jpg" width="450px">
+</div>
+
+Combining visual and contextual information for question answering
+<div align="center">
+  <img src="https://github.com/Kexinyi/6.869_final_project/blob/master/img/Slide2.jpg" width="450px">
+</div>
+
 ### Raw data
 
 COCO: 
