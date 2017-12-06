@@ -13,6 +13,18 @@ Combining visual and contextual information for question answering
   <img src="https://github.com/Kexinyi/6.869_final_project/blob/master/img/Slide2.jpg" width="450px">
 </div>
 
+### Results on COCO-QA
+The following table contains test results from the COCO-QA dataset under different models and contextual input signals.
+```
+-----------------------------------------------------------------------------------------------
+ model                      0 caption                  1 caption                    5 captions
+-----------------------------------------------------------------------------------------------
+ LSTM                       0.3657                     0.6300                       0.8632
+ CNN+LSTM                   0.5167                     0.5942                       0.5879
+ CNN+LSTM+SA                0.5869                     0.6462                       0.8240 
+-----------------------------------------------------------------------------------------------
+```
+
 ### Raw data
 
 COCO: 
