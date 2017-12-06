@@ -57,7 +57,7 @@ unzip cocoqa-2015-05-17.zip -d cocoqa
 ### Preprocess raw data
 Before preprocessing, create a folder for the preprocessed data.
 ```
-mkdir -p data.preprocessed_h5
+mkdir -p data/preprocessed_h5
 ```
 All data should be arranged according to the following structure
 ```
