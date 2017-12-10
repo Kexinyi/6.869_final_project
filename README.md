@@ -27,7 +27,7 @@ The following table contains test results from the COCO-QA dataset under differe
 
 ### Raw data
 
-COCO: 
+COCO
 ```
 mkdir -p data/coco
 cd data/coco
