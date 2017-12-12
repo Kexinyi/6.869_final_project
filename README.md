@@ -1,6 +1,6 @@
 ## Combining Visual and Contextual Information for Question Answering
 
-This is the github repo for 6.869 final project (Fall 2017) by Kexin Yi and Aditya Thomas.
+This is the github repo for 6.869 final project (Fall 2017).
 
 ### Overview
 Visual and contextual question answering as separate task
